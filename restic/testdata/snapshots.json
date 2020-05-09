@@ -1,0 +1,273 @@
+[
+    {
+        "time": "2020-04-24T01:00:01.494966615+02:00",
+        "tree": "819bd7be4e69afa81f48ff81e0a8d925386670fb05d0657c82d4b2c57a7da21e",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "a5b59b0e01f37ab6d004a547d818dee891e285be3e5e1f00aa190f94c5a61237",
+        "short_id": "a5b59b0e"
+    },
+    {
+        "time": "2020-04-14T22:54:53.314919466+02:00",
+        "parent": "a5b59b0e01f37ab6d004a547d818dee891e285be3e5e1f00aa190f94c5a61237",
+        "tree": "fae2f7a06700b9f2fdec7f212c69fb83525c2cb762485e15e7887d8fa16ce066",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "96a3130fa1ec193aa19d80e1518adfe1424e382944249fe06e7aeca207de2753",
+        "short_id": "96a3130f"
+    },
+    {
+        "time": "2020-04-03T01:00:01.361818086+02:00",
+        "parent": "96a3130fa1ec193aa19d80e1518adfe1424e382944249fe06e7aeca207de2753",
+        "tree": "872d29ab20f0c8def1b90ba92cb2ef9f58928104bd3dc4751829e73fed9eb44d",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "377c6681cd947a729b1f9fd721bf49ef0c7d2a46a1f81ce54024f5c8a71e2de8",
+        "short_id": "377c6681"
+    },
+    {
+        "time": "2020-04-16T01:00:01.462111488+02:00",
+        "parent": "377c6681cd947a729b1f9fd721bf49ef0c7d2a46a1f81ce54024f5c8a71e2de8",
+        "tree": "0b54dc511d57bdee1022632ba9e0da4303441bb76014d77c2db2b0784d3cafbb",
+        "paths": [
+            "/backup"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "b7dc3890fc0bf14229f456fa521b61e5bda7bd819e91a0ccde964d4ce099917c",
+        "short_id": "b7dc3890"
+    },
+    {
+        "time": "2020-04-17T01:00:01.071142313+02:00",
+        "parent": "b7dc3890fc0bf14229f456fa521b61e5bda7bd819e91a0ccde964d4ce099917c",
+        "tree": "7453f14904daee526e7ae471f63042050098c54e0beb091131c166de346cdab7",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1",
+            "tag2"
+        ],
+        "id": "960f57171987ffe66a9481e4f48a00d5c2b743498943df3007c52c30ebb5c013",
+        "short_id": "960f5717"
+    },
+    {
+        "time": "2020-04-18T01:00:01.758490768+02:00",
+        "parent": "960f57171987ffe66a9481e4f48a00d5c2b743498943df3007c52c30ebb5c013",
+        "tree": "5d54078a97020e917fdcf8d57db877a56887b6cdc30505e7a13881c80c6d0feb",
+        "paths": [
+            "/",
+            "/backup"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [],
+        "id": "831ae781821f9999447f1d14412f37b26286f37a69ac89299bda84b9a258c502",
+        "short_id": "831ae781"
+    },
+    {
+        "time": "2020-04-19T01:00:01.984942933+02:00",
+        "parent": "831ae781821f9999447f1d14412f37b26286f37a69ac89299bda84b9a258c502",
+        "tree": "1a1356add3e8fee3137180fee503ecbc278c63e12c5862cc2d853a82d0ef95ad",
+        "paths": [
+            "/",
+            "/backup"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2",
+            "tag1"
+        ],
+        "id": "aa20a986662c2e2e9dbed63b56d422b5bc286545a6b28e98e29b47a4f0576065",
+        "short_id": "aa20a986"
+    },
+    {
+        "time": "2020-04-20T01:00:01.313020381+02:00",
+        "parent": "aa20a986662c2e2e9dbed63b56d422b5bc286545a6b28e98e29b47a4f0576065",
+        "tree": "1fff995bcc6ce0ff17edfa648904cc07d3440bc45f919611a693bfd9bee33018",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "f80b2121fd861deb04ae475fbc9b4119fd18986ce1c72e483b4f0dd64b022a8f",
+        "short_id": "f80b2121"
+    },
+    {
+        "time": "2020-04-21T01:00:02.019932088+02:00",
+        "parent": "f80b2121fd861deb04ae475fbc9b4119fd18986ce1c72e483b4f0dd64b022a8f",
+        "tree": "130036dadb4dafe833a04acf78b0f9fb7024d740f8d761736959d4275a95e404",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "11deef410e0400809377277a8bdcd8eb22d0e1e88ad0f9b08e90c751acb167c0",
+        "short_id": "11deef41"
+    },
+    {
+        "time": "2020-04-22T01:00:01.167695227+02:00",
+        "parent": "11deef410e0400809377277a8bdcd8eb22d0e1e88ad0f9b08e90c751acb167c0",
+        "tree": "6c0e1c996ab6403f348c5e6b8861d8a2e9e9328e43653d364c7f2838de3b4ec6",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "9ac89c9bed1fd8f04ed876969a831bb6dfe722527f3f114e283d04e8439307be",
+        "short_id": "9ac89c9b"
+    },
+    {
+        "time": "2020-04-23T01:00:01.316636616+02:00",
+        "parent": "9ac89c9bed1fd8f04ed876969a831bb6dfe722527f3f114e283d04e8439307be",
+        "tree": "dfc0b7eec7a0c4e22309d6707207c5c03596e5cc74fc382292a229781ee29631",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "a8fa6e458b977150d16bab1a49f9737df1172c335a585aeb5b7772d9d19c175e",
+        "short_id": "a8fa6e45"
+    },
+    {
+        "time": "2020-04-24T01:00:01.342704178+02:00",
+        "parent": "a8fa6e458b977150d16bab1a49f9737df1172c335a585aeb5b7772d9d19c175e",
+        "tree": "98cb91bda16ed99ebde8f2e11a9afe8d70885772a63cc2a3d650abf3666058b5",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host1",
+        "username": "root",
+        "tags": [
+            "tag1"
+        ],
+        "id": "f26051fcdcb25e6b5059f66e10999ab12984023bc804df0692a6d80ecf8e4635",
+        "short_id": "f26051fc"
+    },
+    {
+        "time": "2020-04-25T01:00:01.748135778+02:00",
+        "parent": "f26051fcdcb25e6b5059f66e10999ab12984023bc804df0692a6d80ecf8e4635",
+        "tree": "40870c0fcf7adea468a293664ed55ab3a3b37d97e67c139376a02f7d7d42bb55",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "917155736ba2db0c5dc70df13801eeb56b79ebf351c3937753d674569c0a7723",
+        "short_id": "91715573"
+    },
+    {
+        "time": "2020-04-26T01:00:01.37224266+02:00",
+        "parent": "917155736ba2db0c5dc70df13801eeb56b79ebf351c3937753d674569c0a7723",
+        "tree": "798dffb5a43daca0a5bde43cd023a88216cc22ae9cc71bfec831b3d945366500",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "4f1bae37f837865a592b33af5fec17717518d9f975a0fc3f7a475b918eaf65c7",
+        "short_id": "4f1bae37"
+    },
+    {
+        "time": "2020-04-27T01:00:01.837431029+02:00",
+        "parent": "4f1bae37f837865a592b33af5fec17717518d9f975a0fc3f7a475b918eaf65c7",
+        "tree": "174b3f5ff666cf5de2af865f8abff7459f8885002cb1269b0b928b871892836d",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "7cf03eb2897c541ceb5e2e6f1b946338d2f892db03ce7d0687f8cf87bcb044cf",
+        "short_id": "7cf03eb2"
+    },
+    {
+        "time": "2020-04-28T01:00:01.343905016+02:00",
+        "parent": "7cf03eb2897c541ceb5e2e6f1b946338d2f892db03ce7d0687f8cf87bcb044cf",
+        "tree": "692d841984656ceb47bc1ae4e36e54f18119be8d4a915a6212172ed24ac93cc2",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "e802b0a71501e7d19a9950dfa29789a4baf3079f88f04321f67fd524f7abb8e8",
+        "short_id": "e802b0a7"
+    },
+    {
+        "time": "2020-04-29T01:00:01.694216182+02:00",
+        "parent": "e802b0a71501e7d19a9950dfa29789a4baf3079f88f04321f67fd524f7abb8e8",
+        "tree": "8397658f5281a927c70380534645f8a3115b8f14269932535e238f07b92fd497",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "759866ce9357cee87cdfeab27768b6e96ace7536b5d3f788dd0692663dd4d3f8",
+        "short_id": "759866ce"
+    },
+    {
+        "time": "2020-04-30T01:00:01.664171782+02:00",
+        "parent": "759866ce9357cee87cdfeab27768b6e96ace7536b5d3f788dd0692663dd4d3f8",
+        "tree": "746423d59efbdc3da5b2e6d56cf7214953f22ddff757b34f02cc37a6e2737e87",
+        "paths": [
+            "/"
+        ],
+        "hostname": "host2",
+        "username": "root",
+        "tags": [
+            "tag2"
+        ],
+        "id": "50501e5c3998432c9f27fdeb1073f6a5643f51592eda19ebdad7632feab056c0",
+        "short_id": "50501e5c"
+    }
+]

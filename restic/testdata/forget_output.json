@@ -1,0 +1,79 @@
+[
+    {
+        "tags": null,
+        "host": "DESKTOP-MARTY",
+        "paths": [
+            "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+        ],
+        "keep": [
+            {
+                "time": "2020-05-05T00:35:02.8871781+02:00",
+                "parent": "ea6626bd98343f32a8927e9e200b3880bbfd192746cfdc086036bd3afe44c091",
+                "tree": "c1a9d82f00ca2431e13b60f55fea95b4625f8a591efb4bf5e7d93d470f231540",
+                "paths": [
+                    "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+                ],
+                "hostname": "DESKTOP-MARTY",
+                "username": "DESKTOP-MARTY\\backtothefuture",
+                "id": "060eb7c4b74d67ace66c57d009025fab4d92f4f0284b3b19f6b278eb76a7ea86",
+                "short_id": "060eb7c4"
+            }
+        ],
+        "remove": [
+            {
+                "time": "2020-05-05T00:34:51.5411174+02:00",
+                "parent": "d2ce359ca761a46eeb62b1a7bf30d6897b88d7114b83bc5718f30ecb18b92cd0",
+                "tree": "c1a9d82f00ca2431e13b60f55fea95b4625f8a591efb4bf5e7d93d470f231540",
+                "paths": [
+                    "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+                ],
+                "hostname": "DESKTOP-MARTY",
+                "username": "DESKTOP-MARTY\\backtothefuture",
+                "id": "ea6626bd98343f32a8927e9e200b3880bbfd192746cfdc086036bd3afe44c091",
+                "short_id": "ea6626bd"
+            },
+            {
+                "time": "2020-05-05T00:34:45.5981657+02:00",
+                "parent": "bb525fd224f0f7fcdfe437f6f33f43a755a1cf02f889b0cd0a370d64d2a93c25",
+                "tree": "c1a9d82f00ca2431e13b60f55fea95b4625f8a591efb4bf5e7d93d470f231540",
+                "paths": [
+                    "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+                ],
+                "hostname": "DESKTOP-MARTY",
+                "username": "DESKTOP-MARTY\\backtothefuture",
+                "id": "d2ce359ca761a46eeb62b1a7bf30d6897b88d7114b83bc5718f30ecb18b92cd0",
+                "short_id": "d2ce359c"
+            },
+            {
+                "time": "2020-05-05T00:32:42.5922378+02:00",
+                "parent": "2f1f03c1d435c190d2633685f596ce2c8795cd250781b51d3a8385f3e71ed814",
+                "tree": "c1a9d82f00ca2431e13b60f55fea95b4625f8a591efb4bf5e7d93d470f231540",
+                "paths": [
+                    "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+                ],
+                "hostname": "DESKTOP-MARTY",
+                "username": "DESKTOP-MARTY\\backtothefuture",
+                "id": "bb525fd224f0f7fcdfe437f6f33f43a755a1cf02f889b0cd0a370d64d2a93c25",
+                "short_id": "bb525fd2"
+            }
+        ],
+        "reasons": [
+            {
+                "snapshot": {
+                    "time": "2020-05-05T00:35:02.8871781+02:00",
+                    "parent": "ea6626bd98343f32a8927e9e200b3880bbfd192746cfdc086036bd3afe44c091",
+                    "tree": "c1a9d82f00ca2431e13b60f55fea95b4625f8a591efb4bf5e7d93d470f231540",
+                    "paths": [
+                        "C:\\Users\\backtothefuture\\Projects\\restic-controller\\conf"
+                    ],
+                    "hostname": "DESKTOP-MARTY",
+                    "username": "DESKTOP-MARTY\\backtothefuture"
+                },
+                "matches": [
+                    "last snapshot"
+                ],
+                "counters": {}
+            }
+        ]
+    }
+]

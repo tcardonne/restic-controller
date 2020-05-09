@@ -1,0 +1,47 @@
+exporter:
+  # Prometheus exporter will listen on this address
+  bind_address: ":8080"
+
+log:
+  # Use debug to output executed restic commands
+  level: "info"
+
+# Repositories configuration
+repositories:
+    # Name of your repository
+    - name: "local"
+      # Restic repository URL
+      url: "./repository"
+      # Restic repository password
+      password: "testtest"
+
+      # Check configuration
+      check:
+        # Cron formatted schedule
+        schedule: "* * * * *"
+
+        # Run the check on startup (defaults to false)
+        # run_on_startup: false
+
+      retention:
+        # Cron formatted schedule
+        schedule: "* * * * *"
+
+        # Run the check on startup (defaults to false)
+        # run_on_startup: false
+
+        # Retention policy, see restic docs for details
+        policy:
+          keep_last: 1
+          # keep_daily: 3
+          # keep_hourly: 1
+          # keep_weekly: 1
+          # keep_monthly: 1
+          # keep_yearly: 1
+
+          # Keep snapshots with tag1 OR tag2
+          # keep_tags: ["tag1", "tag2"]
+          # Keep snapshots with tag1 AND tag2
+          # keep_tags: ["tag1,tag2"]
+
+          # keep_within: "3y1m2d"

@@ -1,0 +1,2 @@
+error: error loading index 66c1a8dc: load <index/66c1a8dcc0>: invalid data returned
+Fatal: LoadIndex returned errors
