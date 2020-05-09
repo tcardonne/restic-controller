@@ -52,7 +52,7 @@ type SnapshotGroupKey struct {
 // SnapshotGroups is used a as a map of Snapshots grouped by SnapshotGroupKey
 type SnapshotGroups map[SnapshotGroupKey]Snapshots
 
-// TotalSnapshotsCount returns the total count of snapshots accross all groups
+// TotalSnapshotsCount returns the total count of snapshots across all groups
 func (sg SnapshotGroups) TotalSnapshotsCount() int {
 	var count int
 	for _, g := range sg {

@@ -45,7 +45,7 @@ func newRepositoryCollector(ctx context.Context,
 		retentionController: retentionController,
 		logger:              log.WithFields(log.Fields{"component": "exporter/collector"}),
 
-		errorMetric: prometheus.NewDesc("restic_error", "Error occured when trying to collect metrics", nil, nil),
+		errorMetric: prometheus.NewDesc("restic_error", "Error occurred when trying to collect metrics", nil, nil),
 
 		repoSnapshotsTotalMetric: prometheus.NewDesc("restic_repo_snapshots_total",
 			"Total count of snapshots in the repository",
@@ -107,7 +107,7 @@ func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch 
 	// Snapshot metrics
 	groups, err := restic.GetSnapshotGroups(c.ctx, repository.URL, repository.Password)
 	if err != nil {
-		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occured when fetching restic snapshot list")
+		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occurred when fetching restic snapshot list")
 		ch <- prometheus.NewInvalidMetric(c.errorMetric, err)
 		wg.Done()
 		return
@@ -135,7 +135,7 @@ func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch 
 	// Integrity metrics
 	report, err := c.integrityController.GetIntegrityReport(repository.Name)
 	if err != nil {
-		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occured whe fetching integrity status from controller")
+		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occurred whe fetching integrity status from controller")
 		ch <- prometheus.NewInvalidMetric(c.errorMetric, err)
 		wg.Done()
 		return
@@ -160,7 +160,7 @@ func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch 
 	// Retention forget metrics
 	retentionReport, err := c.retentionController.GetRetentionReport(repository.Name)
 	if err != nil {
-		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occured whe fetching retention report from controller")
+		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occurred whe fetching retention report from controller")
 		ch <- prometheus.NewInvalidMetric(c.errorMetric, err)
 		wg.Done()
 		return

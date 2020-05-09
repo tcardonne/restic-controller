@@ -1,6 +1,8 @@
 # Restic Controller
 
 [![Tests, build and publish](https://github.com/tcardonne/restic-controller/workflows/Tests,%20build%20and%20publish/badge.svg)](https://github.com/tcardonne/restic-controller/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tcardonne/restic-controller)](https://goreportcard.com/report/github.com/tcardonne/restic-controller)
+[![Docker Pulls](https://img.shields.io/docker/pulls/tcardonne/restic-controller)](https://hub.docker.com/r/tcardonne/restic-controller)
 
 ## Introduction
 
