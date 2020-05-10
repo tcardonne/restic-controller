@@ -1,0 +1,19 @@
+groups:
+  - name: ResticControllerGroup
+    rules:
+      - alert: IntegrityCheckFailure
+        expr: restic_repo_integrity_check_status != 1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Integrity check failure (repository : {{ $labels.repository }})"
+          description: "Integrity check failed for the repository {{ $labels.repository }}\n\n  LABELS: {{ $labels }}"
+
+      - alert: LatestSnapshotTooOld
+        expr: time() - restic_group_snapshot_latest_seconds >= 90000
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latest snapshot in repository {{ $labels.repository }} is older than 25h"
+          description: "Latest snapshot in repository {{ $labels.repository }} is older than 25h.\nVerify backup job for this host.\n\nLABELS: {{ $labels }}"

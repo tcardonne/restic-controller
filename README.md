@@ -70,6 +70,13 @@ repositories:
 
 This configuration will run integrity checks everyday at 3AM and apply the retention policy at 4AM. The policy will keep the last 15 snapshots.
 
+## Grafana & Alertmanager
+
+A Grafana dashboard and a sample Alertmanager rules file are available in the `examples/` directory.
+
+![Grafana example](examples/grafana.png)
+
+
 ## License
 
 This project is licensed under [BSD 2-Clause License](https://opensource.org/licenses/BSD-2-Clause). You can find the complete text in the file `LICENSE`.
