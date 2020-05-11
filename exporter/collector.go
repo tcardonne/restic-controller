@@ -3,6 +3,7 @@ package exporter
 import (
 	"context"
 	"sync"
+	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
@@ -18,7 +19,8 @@ type repositoryCollector struct {
 	retentionController *controller.RetentionController
 	logger              *log.Entry
 
-	errorMetric *prometheus.Desc
+	errorMetric          *prometheus.Desc
+	scrapeDurationMetric *prometheus.Desc
 
 	repoSnapshotsTotalMetric           *prometheus.Desc
 	groupSnapshotsTotalMetric          *prometheus.Desc
@@ -46,6 +48,10 @@ func newRepositoryCollector(ctx context.Context,
 		logger:              log.WithFields(log.Fields{"component": "exporter/collector"}),
 
 		errorMetric: prometheus.NewDesc("restic_error", "Error occurred when trying to collect metrics", nil, nil),
+		scrapeDurationMetric: prometheus.NewDesc("restic_scrape_duration_seconds",
+			"Total time in seconds spent to collect all metrics",
+			nil, nil,
+		),
 
 		repoSnapshotsTotalMetric: prometheus.NewDesc("restic_repo_snapshots_total",
 			"Total count of snapshots in the repository",
@@ -93,12 +99,17 @@ func (c *repositoryCollector) Describe(ch chan<- *prometheus.Desc) {
 
 //Collect implements required collect function for all promehteus collectors
 func (c *repositoryCollector) Collect(ch chan<- prometheus.Metric) {
+	start := time.Now()
+
 	var wg sync.WaitGroup
 	for _, repository := range c.repositories {
 		wg.Add(1)
 		go c.CollectRepository(repository, ch, &wg)
 	}
 	wg.Wait()
+
+	elapsted := time.Since(start)
+	ch <- prometheus.MustNewConstMetric(c.scrapeDurationMetric, prometheus.GaugeValue, elapsted.Seconds())
 }
 
 func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch chan<- prometheus.Metric, wg *sync.WaitGroup) {
