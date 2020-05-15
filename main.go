@@ -1,6 +1,8 @@
 package main
 
 import (
+	"flag"
+
 	log "github.com/sirupsen/logrus"
 	"github.com/tcardonne/restic-controller/conf"
 	"github.com/tcardonne/restic-controller/controller"
@@ -8,7 +10,10 @@ import (
 )
 
 func main() {
-	config, err := conf.LoadConfiguration()
+	configFile := flag.String("config", "config.yml", "Specify a configuration file to load")
+	flag.Parse()
+
+	config, err := conf.LoadConfiguration(*configFile)
 	if err != nil {
 		log.WithField("err", err).Fatal("Failed to load configuration")
 	}

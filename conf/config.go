@@ -35,15 +35,14 @@ type Configuration struct {
 }
 
 // LoadConfiguration loads and validates the configuration from a file
-func LoadConfiguration() (*Configuration, error) {
+func LoadConfiguration(configFile string) (*Configuration, error) {
 	configuration := Configuration{
 		Exporter: ExporterConfig{
 			BindAddress: "127.0.0.1:8080",
 		},
 	}
 
-	viper.SetConfigName("config")
-	viper.AddConfigPath(".")
+	viper.SetConfigFile(configFile)
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, err
 	}
