@@ -94,6 +94,15 @@
                                 "to": "",
                                 "type": 1,
                                 "value": "0"
+                            },
+                            {
+                                "from": "",
+                                "id": 3,
+                                "operator": "",
+                                "text": "Unknown",
+                                "to": "",
+                                "type": 1,
+                                "value": "null"
                             }
                         ],
                         "thresholds": {
@@ -258,6 +267,7 @@
             },
             "yaxes": [
                 {
+                    "decimals": 0,
                     "format": "short",
                     "label": "snapshot count ",
                     "logBase": 1,
@@ -353,6 +363,7 @@
             },
             "yaxes": [
                 {
+                    "decimals": 0,
                     "format": "short",
                     "label": "snapshot count ",
                     "logBase": 1,
@@ -380,7 +391,7 @@
             "datasource": "${DS_PROMETHEUS}",
             "fontSize": "100%",
             "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 24,
                 "x": 0,
                 "y": 13
@@ -485,7 +496,7 @@
                 "h": 5,
                 "w": 24,
                 "x": 0,
-                "y": 19
+                "y": 18
             },
             "id": 9,
             "links": [],
@@ -577,6 +588,81 @@
             "title": "Retention policy last applies",
             "transform": "table",
             "type": "table"
+        },
+        {
+            "cacheTimeout": null,
+            "columns": [],
+            "datasource": "${DS_PROMETHEUS}",
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 13,
+                "w": 24,
+                "x": 0,
+                "y": 23
+            },
+            "id": 10,
+            "links": [],
+            "pageSize": 10,
+            "pluginVersion": "6.4.3",
+            "showHeader": true,
+            "sort": {
+                "col": 0,
+                "desc": true
+            },
+            "styles": [
+                {
+                    "alias": "Date",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(50, 172, 45, 0.97)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(245, 54, 54, 0.9)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": null,
+                    "mappingType": 1,
+                    "pattern": "Value",
+                    "thresholds": [
+                        ""
+                    ],
+                    "type": "number",
+                    "unit": "dateTimeAsIso"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "/Time|instance|job|__name__/",
+                    "thresholds": [],
+                    "type": "hidden",
+                    "unit": "short"
+                }
+            ],
+            "targets": [
+                {
+                    "expr": "sort(restic_repo_snapshot_datetime_seconds * 1000)",
+                    "format": "table",
+                    "instant": true,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "B"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "All snapshots list",
+            "transform": "table",
+            "type": "table"
         }
     ],
     "refresh": "5s",
@@ -610,5 +696,5 @@
     "variables": {
         "list": []
     },
-    "version": 12
+    "version": 15
 }
