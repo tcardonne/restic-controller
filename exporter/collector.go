@@ -23,6 +23,7 @@ type repositoryCollector struct {
 	scrapeDurationMetric *prometheus.Desc
 
 	repoSnapshotsTotalMetric           *prometheus.Desc
+	repoSnapshotTimestampMetric        *prometheus.Desc
 	groupSnapshotsTotalMetric          *prometheus.Desc
 	groupLatestSnapshotTimestampMetric *prometheus.Desc
 
@@ -56,6 +57,10 @@ func newRepositoryCollector(ctx context.Context,
 		repoSnapshotsTotalMetric: prometheus.NewDesc("restic_repo_snapshots_total",
 			"Total count of snapshots in the repository",
 			[]string{"repository"}, nil,
+		),
+		repoSnapshotTimestampMetric: prometheus.NewDesc("restic_repo_snapshot_datetime_seconds",
+			"Number of seconds since 1970 of snapshot's datetime",
+			[]string{"repository", "host", "paths", "tags", "short_id"}, nil,
 		),
 		groupSnapshotsTotalMetric: prometheus.NewDesc("restic_group_snapshots_total",
 			"Total count of snapshots in a group",
@@ -139,6 +144,13 @@ func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch 
 			ch <- prometheus.MustNewConstMetric(c.groupLatestSnapshotTimestampMetric, prometheus.CounterValue,
 				float64(snapshots[0].Time.Unix()),
 				repository.Name, key.Hostname, key.Paths, key.Tags,
+			)
+		}
+
+		for _, snapshot := range snapshots {
+			ch <- prometheus.MustNewConstMetric(c.repoSnapshotTimestampMetric, prometheus.CounterValue,
+				float64(snapshot.Time.Unix()),
+				repository.Name, key.Hostname, key.Paths, key.Tags, snapshot.ShortID,
 			)
 		}
 	}
