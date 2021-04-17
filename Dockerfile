@@ -16,7 +16,7 @@ COPY . .
 RUN go build -o bin/restic-controller .
 
 # Actual released image
-FROM restic/restic:0.9.6
+FROM restic/restic:0.12.0
 
 RUN mkdir -p /app
 WORKDIR /app
