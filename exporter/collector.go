@@ -95,14 +95,14 @@ func newRepositoryCollector(ctx context.Context,
 	}
 }
 
-//Each and every collector must implement the Describe function.
-//It essentially writes all descriptors to the prometheus desc channel.
+// Each and every collector must implement the Describe function.
+// It essentially writes all descriptors to the prometheus desc channel.
 func (c *repositoryCollector) Describe(ch chan<- *prometheus.Desc) {
 	//Update this section with the each metric you create for a given collector
 	ch <- c.repoSnapshotsTotalMetric
 }
 
-//Collect implements required collect function for all promehteus collectors
+// Collect implements required collect function for all promehteus collectors
 func (c *repositoryCollector) Collect(ch chan<- prometheus.Metric) {
 	start := time.Now()
 
@@ -121,7 +121,7 @@ func (c *repositoryCollector) CollectRepository(repository *conf.Repository, ch 
 	c.logger.WithField("repository", repository.Name).Info("Starting collection")
 
 	// Snapshot metrics
-	groups, err := restic.GetSnapshotGroups(c.ctx, repository.URL, repository.Password)
+	groups, err := restic.GetSnapshotGroups(c.ctx, repository.URL, repository.Password, &repository.Env)
 	if err != nil {
 		c.logger.WithFields(log.Fields{"repository": repository.Name, "err": err}).Error("Error occurred when fetching restic snapshot list")
 		ch <- prometheus.NewInvalidMetric(c.errorMetric, err)

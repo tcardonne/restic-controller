@@ -13,6 +13,10 @@ import (
 // Repositories targets are not used in reality for unit tests
 var testResticRepository = "rest:https://user:password@restic.domain.tld/test"
 var testResticPassword = "repositoryPassword"
+var testEnvMap = map[string]string{
+	"RESTIC_REST_USERNAME": "test",
+	"RESTIC_REST_PASSWORD": "test",
+}
 
 // Mock exec.Command calls
 func mockExecOutputString(output string, exitCode int) func(context.Context, string, ...string) *exec.Cmd {

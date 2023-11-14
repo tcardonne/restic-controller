@@ -51,7 +51,7 @@ func (c *RetentionController) Start() error {
 
 		_, err := schedules.AddFunc(repository.Retention.Schedule, c.RunForget(repository))
 		if err != nil {
-			return fmt.Errorf(`Failed to add cron for repository "%s" with schedule "%s" : "%s"`, repository.Name, repository.Retention.Schedule, err)
+			return fmt.Errorf(`failed to add cron for repository "%s" with schedule "%s" : "%s"`, repository.Name, repository.Retention.Schedule, err)
 		}
 
 		if repository.Retention.RunOnStartup {
@@ -68,7 +68,7 @@ func (c *RetentionController) RunForget(repository *conf.Repository) func() {
 	return func() {
 		c.logger.WithField("repository", repository.Name).Info("Running forget")
 
-		forgetResult, err := restic.RunForget(repository.URL, repository.Password, repository.Retention.Policy)
+		forgetResult, err := restic.RunForget(repository.URL, repository.Password, &repository.Env, repository.Retention.Policy)
 		if err != nil {
 			c.logger.WithFields(log.Fields{
 				"repository": repository.Name,
@@ -91,7 +91,7 @@ func (c *RetentionController) GetRetentionReport(repositoryName string) (Retenti
 	report, ok := c.retentionReports[repositoryName]
 	c.mu.Unlock()
 	if !ok {
-		return RetentionReport{}, fmt.Errorf("No repository for name %s", repositoryName)
+		return RetentionReport{}, fmt.Errorf("no repository for name %s", repositoryName)
 	}
 
 	return report, nil
@@ -102,7 +102,7 @@ func (c *RetentionController) setRetentionReport(repositoryName string, kept int
 	report, ok := c.retentionReports[repositoryName]
 	if !ok {
 		c.mu.Unlock()
-		return fmt.Errorf("No repository for name %s", repositoryName)
+		return fmt.Errorf("no repository for name %s", repositoryName)
 	}
 	time := time.Now()
 	report.Time = &time

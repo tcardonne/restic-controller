@@ -50,7 +50,7 @@ func (c *IntegrityController) Start() error {
 
 		_, err := schedules.AddFunc(repository.Check.Schedule, c.RunCheck(repository))
 		if err != nil {
-			return fmt.Errorf(`Failed to add cron for repository "%s" with schedule "%s" : "%s"`, repository.Name, repository.Check.Schedule, err)
+			return fmt.Errorf(`failed to add cron for repository "%s" with schedule "%s" : "%s"`, repository.Name, repository.Check.Schedule, err)
 		}
 
 		if repository.Check.RunOnStartup {
@@ -67,7 +67,7 @@ func (c *IntegrityController) RunCheck(repository *conf.Repository) func() {
 	return func() {
 		c.logger.WithField("repository", repository.Name).Info("Running integrity check")
 
-		healthy, err := restic.RunIntegrityCheck(repository.URL, repository.Password)
+		healthy, err := restic.RunIntegrityCheck(repository.URL, repository.Password, &repository.Env)
 		c.setIntegrityReport(repository.Name, healthy)
 		if err != nil {
 			c.logger.WithFields(log.Fields{
@@ -90,7 +90,7 @@ func (c *IntegrityController) GetIntegrityReport(repositoryName string) (Integri
 	report, ok := c.integrityReports[repositoryName]
 	c.mu.Unlock()
 	if !ok {
-		return IntegrityReport{}, fmt.Errorf("No repository for name %s", repositoryName)
+		return IntegrityReport{}, fmt.Errorf("no repository for name %s", repositoryName)
 	}
 
 	return report, nil
@@ -101,7 +101,7 @@ func (c *IntegrityController) setIntegrityReport(repositoryName string, healthy 
 	report, ok := c.integrityReports[repositoryName]
 	if !ok {
 		c.mu.Unlock()
-		return fmt.Errorf("No repository for name %s", repositoryName)
+		return fmt.Errorf("no repository for name %s", repositoryName)
 	}
 	time := time.Now()
 	report.Time = &time

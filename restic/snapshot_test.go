@@ -13,7 +13,7 @@ func TestGetSnapshotGroups(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	ctx := context.TODO()
-	groups, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword)
+	groups, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword, &testEnvMap)
 	assert.NoError(t, err)
 
 	assert.Len(t, groups, 7)
@@ -52,7 +52,7 @@ func TestGetSnapshotGroups_EmptyRepository(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	ctx := context.TODO()
-	groups, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword)
+	groups, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword, &testEnvMap)
 	assert.NoError(t, err)
 	assert.Empty(t, groups)
 }
@@ -62,7 +62,7 @@ func TestGetSnapshotGroups_InvalidJSON(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	ctx := context.TODO()
-	out, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword)
+	out, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword, &testEnvMap)
 	assert.Error(t, err)
 	assert.Nil(t, out)
 }
@@ -72,7 +72,7 @@ func TestGetSnapshotGroups_ExitError(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	ctx := context.TODO()
-	out, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword)
+	out, err := GetSnapshotGroups(ctx, testResticRepository, testResticPassword, &testEnvMap)
 	assert.Error(t, err)
 	assert.Nil(t, out)
 }

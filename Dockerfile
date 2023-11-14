@@ -1,5 +1,5 @@
 # Development image with go toolchain
-FROM golang:1.14-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 RUN apk update && \
     apk add alpine-sdk && \

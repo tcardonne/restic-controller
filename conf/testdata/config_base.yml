@@ -1,0 +1,16 @@
+exporter:
+  bind_address: ":8080"
+
+log:
+  level: "info"
+
+repositories:
+  - name: "backtothefuture"
+    url: "rest:https://user:password@repositories.restic.example/backtothefuture"
+    password: "testtest"
+    check:
+      schedule: "* * * * *"
+    retention:
+      schedule: "* * * * *"
+      policy:
+        keep_last: 1

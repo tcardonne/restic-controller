@@ -1,6 +1,8 @@
 package conf
 
 import (
+	"os"
+
 	"github.com/go-playground/validator/v10"
 	"github.com/spf13/viper"
 	"github.com/tcardonne/restic-controller/restic"
@@ -13,18 +15,21 @@ type ExporterConfig struct {
 
 // Repository contains configuration for one repository
 type Repository struct {
-	Name     string `mapstructure:"name" validate:"required"`
-	URL      string `mapstructure:"url" validate:"required"`
-	Password string `mapstructure:"password" validate:"required"`
-	Check    struct {
+	Name         string            `mapstructure:"name" validate:"required"`
+	URL          string            `mapstructure:"url" validate:"required"`
+	Password     string            `mapstructure:"password" validate:"required_without=PasswordFile"`
+	PasswordFile string            `mapstructure:"password_file" validate:"required_without=Password"`
+	EnvFromFile  map[string]string `mapstructure:"env_from_file"`
+	Env          map[string]string `mapstructure:"env"`
+	Check        struct {
 		Schedule     string `mapstructure:"schedule" validate:"required"`
 		RunOnStartup bool   `mapstructure:"run_on_startup"`
-	} `mapstructure:"check" validate:"required,dive"`
+	} `mapstructure:"check" validate:"required"`
 	Retention struct {
 		Schedule     string               `mapstructure:"schedule" validate:"required"`
 		RunOnStartup bool                 `mapstructure:"run_on_startup"`
-		Policy       *restic.ForgetPolicy `mapstructure:"policy" validate:"required,dive"` // A changer
-	} `mapstructure:"retention" validate:"required,dive"`
+		Policy       *restic.ForgetPolicy `mapstructure:"policy" validate:"required"`
+	} `mapstructure:"retention" validate:"required"`
 }
 
 // Configuration is the root of the configuration
@@ -50,6 +55,29 @@ func LoadConfiguration(configFile string) (*Configuration, error) {
 	err := viper.Unmarshal(&configuration)
 	if err != nil {
 		return nil, err
+	}
+
+	for _, r := range configuration.Repositories {
+		if r.PasswordFile != "" {
+			content, err := os.ReadFile(r.PasswordFile)
+			if err != nil {
+				return nil, err
+			}
+
+			r.Password = string(content)
+		}
+
+		if r.Env == nil {
+			r.Env = make(map[string]string)
+		}
+
+		for k, v := range r.EnvFromFile {
+			content, err := os.ReadFile(v)
+			if err != nil {
+				return nil, err
+			}
+			r.Env[k] = string(content)
+		}
 	}
 
 	if err := validateConfiguration(&configuration); err != nil {

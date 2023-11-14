@@ -1,0 +1,9 @@
+exporter:
+  bind_address: ":8080"
+
+log:
+  level: "info"
+
+repositories:
+  - name: "backtothefuture"
+    # Missing required fields

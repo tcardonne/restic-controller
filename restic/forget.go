@@ -57,7 +57,7 @@ type ForgetGroupResult struct {
 }
 
 // RunForget calls restic to run the forget command according to the given policy
-func RunForget(repository string, password string, policy *ForgetPolicy) (*ForgetResult, error) {
+func RunForget(repository string, password string, env *map[string]string, policy *ForgetPolicy) (*ForgetResult, error) {
 	ctx := context.TODO()
 
 	args := []string{
@@ -72,14 +72,14 @@ func RunForget(repository string, password string, policy *ForgetPolicy) (*Forge
 
 	cmd := execCommandContext(ctx, "restic", args...)
 	cmd.Env = append(cmd.Env, os.Environ()...)
-	cmd.Env = append(cmd.Env, "RESTIC_PASSWORD="+password)
+	cmd.Env = append(cmd.Env, buildCmdEnv(password, env)...)
 
 	log.WithFields(log.Fields{"component": "restic", "cmd": strings.Join(cmd.Args, " ")}).Debug("Running restic forget command")
 	output, err := cmd.Output()
 
 	if err != nil {
 		if exiterr, ok := err.(*exec.ExitError); ok {
-			return nil, fmt.Errorf("Restic command returned with code %d : %s", exiterr.ExitCode(), exiterr.Stderr)
+			return nil, fmt.Errorf("restic command returned with code %d : %s", exiterr.ExitCode(), exiterr.Stderr)
 		}
 
 		return nil, err

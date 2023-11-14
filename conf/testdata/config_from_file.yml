@@ -1,0 +1,18 @@
+exporter:
+  bind_address: ":8080"
+
+log:
+  level: "info"
+
+repositories:
+  - name: "backtothefuture"
+    url: "rest:https://repositories.restic.example/backtothefuture"
+    env_from_file:
+      RESTIC_REST_PASSWORD: ./tmp-test-loadconfig-envfromfile
+    password_file: ./tmp-test-loadconfig-envfromfile
+    check:
+      schedule: "* * * * *"
+    retention:
+      schedule: "* * * * *"
+      policy:
+        keep_last: 1

@@ -59,7 +59,11 @@ exporter:
 repositories:
     - name: "backtothefuture"
       url: "rest:https://user:password@repositories.restic.example/backtothefuture"
+      # envFromFile:
+      #   RESTIC_REST_USERNAME: /etc/secrets/backtothefuture/username
+      #   RESTIC_REST_PASSWORD: /etc/secrets/backtothefuture/password
       password: "password"
+      # passwordFile: "/etc/secrets/backtothefuture-repository"
       check:
         schedule: "0 3 * * *"
       retention:

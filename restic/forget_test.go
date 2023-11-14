@@ -13,7 +13,7 @@ func TestRunForget(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	policy := ForgetPolicy{KeepLast: 1}
-	result, err := RunForget(testResticRepository, testResticPassword, &policy)
+	result, err := RunForget(testResticRepository, testResticPassword, &testEnvMap, &policy)
 	assert.NoError(t, err)
 
 	assert.Equal(t, 1, result.TotalKeep())
@@ -25,7 +25,7 @@ func TestRunForget_InvalidJSON(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	policy := ForgetPolicy{KeepLast: 1}
-	result, err := RunForget(testResticRepository, testResticPassword, &policy)
+	result, err := RunForget(testResticRepository, testResticPassword, &testEnvMap, &policy)
 
 	assert.Error(t, err)
 	assert.Nil(t, result)
@@ -36,7 +36,7 @@ func TestRunForget_ExitError(t *testing.T) {
 	defer func() { execCommandContext = exec.CommandContext }()
 
 	policy := ForgetPolicy{KeepLast: 1}
-	result, err := RunForget(testResticRepository, testResticPassword, &policy)
+	result, err := RunForget(testResticRepository, testResticPassword, &testEnvMap, &policy)
 
 	assert.Error(t, err)
 	assert.Nil(t, result)
